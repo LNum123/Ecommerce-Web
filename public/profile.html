@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleProfile.css">
+
+    <!-- FontAwesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="nav-leftsection">
+            <div class="logo" id="logo">
+                <a href="index.html"><img src="./img/logo.png" alt=""></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Product</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav-right-section">
+            <!-- search bar -->
+            <div class="search-container">
+                <input type="text" id="search-input" name="search" placeholder="Search..." class="search-input">
+                <a href="#" id="search-btn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+
+            <!-- cart -->
+            <div class="search-container cart-btn">
+                <span class="nav-icon">
+                    <i class="fas fa-cart-plus"></i>
+                </span>
+                <div class="cart-items">0</div>
+            </div>
+
+            <!-- login -->
+            <div class="search-container account" id="account">
+                <a href="#" onclick="checkLogin()"><i class="fa-solid fa-user"></i></a>
+            </div>
+    </header>
+
+
+    <button class="signOut">Sign Out</button>
+
+    <!-- Sidenav -->
+    <div class="sidenav">
+        <!-- profile details -->
+        <div class="profile-details">
+            <!-- <div class="profile-username">
+                <h2>Username: {{username}}</h2>
+            </div>
+            <div class="profile-password">
+                <h2>Password: {{password}}</h2>
+            </div>
+            <div class="profile-email">
+                <h2>Email: {{email}}</h2>
+            </div> -->
+        </div>
+
+
+        <div class="change">
+                <i class="fa fa-pen fa-xs edit"><a href="forgotPassword.html">Password</a></i>
+
+                <i class="fa fa-pen fa-xs edit"><a href="changeUsername.html">Username</a></i>
+        </div>
+
+        <div class="card">
+            <h2>SOCIAL MEDIA</h2>
+            <div class="card-body">
+                <div class="social-media">
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-invision fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-whatsapp fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-snapchat fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <!-- cart -->
+    <div class="cart-overlay">
+        <div class="cart">
+            <span class="close-cart">
+                <i class="fas fa-window-close"></i>
+            </span>
+            <h2>your cart</h2>
+            <div class="cart-content">
+                <!-- cart item -->
+                <!-- <div class="cart-item">
+                        <img src="./images/product-1.jpeg" alt="product">
+                        <div>
+                            <h4>Stylish Women dress</h4>
+                            <h5>$24.99</h5>
+                            <span class="remove-item">remove</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-chevron-up"></i>
+                            <p class="item-amount">1</p>
+                            <i class="fas fa-chevron-down"></i>
+                        </div> -->
+            </div>
+            <div class="cart-footer">
+                <h3>your total : $ <span class="cart-total">0</span></h3>
+                <div class="cart-footer-btn">
+                    <button class="clear-cart">clear cart</button>
+                    <!-- Buy Button -->
+                    <button type="button" class="btn-buy">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <script type="module" src="./script/cart.js"></script>
+    <script type="module" src="./script/profile.js"></script>
+    <script type="module" src="./script/searchProduct.js"> </script>
+
+</body>
+
+</html>

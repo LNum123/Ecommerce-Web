@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main-color: #ff69b4;   
+    --sec-color: #FFA2B9;    
+    --third-color: #FFB2C5;  
+    --for-color: #ffc2d1;    
+    --fif-color: #FDD5DF;    
+    --six-color: #FAE8ED;    
+    --main-text-color: #1e1818;
+    --sec-text-color: #302222;
+    --mainTransition: all 0.3s linear;
+}
+
+main{
+    margin: auto;
+    padding: 1rem;
+}
+
+main a{
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.1rem;
+    border: 1px solid #fff;
+}
+
+main a:hover{
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+/* product details */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: auto;
+    max-width: 100vh;
+}
+
+.product-details img {
+    max-width: 300px;
+    height: auto;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+.product-details h1, .product-details h2 {
+    margin: 0.5rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.product-details h2{
+    margin-top: 0.7rem;
+    letter-spacing: 0.1rem;
+    color: var(--main-color);
+    text-align: center;
+    font-weight: 800;
+}
+
+#product-categories{
+    margin: 0.5rem auto;
+    text-align: center;
+    color: var(--sec-color);
+    letter-spacing: 0.05rem;
+    font-size: 0.95rem;
+}
+
+.product-details p {
+    max-width: 600px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: 'Josefin', sans-serif;
+}
+
+.product-details:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.product-details #product-description{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 450;
+}
+
+.product-details .add-to-cart{
+    background-color: var(--main-color);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 2rem 0 auto;
+}
+
+.product-details .add-to-cart:hover{
+    background-color: transparent;
+    border: 3px solid var(--main-color); 
+    color: var(--main-color);
+}

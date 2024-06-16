@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "title": "Stylish Women dress",
+        "price": 24.99,
+        "image": { "fields": { "file": { "url": "./img/products/product-1.png" } } },
+        "categories" : "Dress"
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "title": "Long Sleeves Men shirt(dark-blue)",
+        "price": 15.99,
+        "image": { "fields": { "file": { "url": "./img/products/product-2.png" } } },
+        "categories" : "long sleeves shirt"
+      }
+    },
+    {
+      "sys": { "id": "3" },
+      "fields": {
+        "title": "Purple Men t-shirt",
+        "price": 12.99,
+        "image": { "fields": { "file": { "url": "./img/products/product-3.png" } } },
+        "categories" : "t-shirt"
+      }
+    },
+    {
+      "sys": { "id": "4" },
+      "fields": {
+        "title": "Red Men t-shirt",
+        "price": 12.99,
+        "image": { "fields": { "file": { "url": "./img/products/product-4.png" } } },
+        "categories" : "t-shirt"
+      }
+    },
+    {
+      "sys": { "id": "5" },
+      "fields": {
+        "title": "Long Sleeves Men shirt(blue)",
+        "price": 15.99,
+        "image": { "fields": { "file": { "url": "./img/products/product-5.png" } } },
+        "categories" : "long sleeves shirt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "user": [
+    {
+      "sys": {
+        "id": "1"
+      },
+      "fields": {
+        "username": "admin",
+        "password": "admin1234",
+        "usedPassword": [
+          "admin123",
+          "admin123"
+        ],
+        "email": "admin@gmail.com"
+      }
+    },
+    {
+      "sys": {
+        "id": "2"
+      },
+      "fields": {
+        "username": "user1234",
+        "password": "user1234",
+        "usedPassword": [],
+        "email": "user1@mail.com"
+      }
+    }
+  ]
+}
