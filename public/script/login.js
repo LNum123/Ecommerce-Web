@@ -1,6 +1,6 @@
 
-let usernameInput = document.querySelector(".username-input");
-let passwordInput = document.querySelector(".password-input");
+const usernameInput = document.querySelector(".username-input");
+const passwordInput = document.querySelector(".password-input");
 const loginButton = document.querySelector(".login-btn");
 const accountButton = document.getElementById("account");
 
