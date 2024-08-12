@@ -1,6 +1,6 @@
 
-const usernameInput = document.querySelector(".username-input");
-const passwordInput = document.querySelector(".password-input");
+let usernameInput = document.querySelector(".username-input");
+let passwordInput = document.querySelector(".password-input");
 const loginButton = document.querySelector(".login-btn");
 const accountButton = document.getElementById("account");
 
@@ -10,45 +10,64 @@ class User {
     async getUser() {
         try {
             const response = await fetch("user.json");
+
             if (!response.ok) {
                 throw new Error("Network response was not ok " + response.statusText);
             }
 
             let userData = await response.json();
 
-            userData = userData.user;
-            userData = userData.map(user => {
+            userData = userData.user.map(user => {
                 const { username, password } = user.fields;
                 const { id } = user.sys;
 
                 return { id, username, password };
             });
 
-            console.log(userData);
-
+            console.log("Fetched from server:", userData);
             return userData;
+
         } catch (error) {
-            console.error("Error fetching user data:", error);
-            throw error;
+            console.error("Error fetching user data from server: " + error.message);
+            return this.getUserLocalStorage(); // Fallback to localStorage if server is not available
         }
     }
+
+    async getUserLocalStorage() {
+        let localStorageData = JSON.parse(localStorage.getItem("users")) || { user: [] };
+
+        const userData = localStorageData.user.map(user => {
+            return {
+                id: user.sys.id,
+                username: user.fields.username,
+                password: user.fields.password
+            };
+        });
+
+        console.log("Fetched from localStorage:", userData);
+        return userData;
+    }
 }
+
+
 
 export class Login {
     userLogin(users, username, password) {
         try {
+            // Check if the user exists in the provided users array
             let user = users.find(user => user.username === username && user.password === password);
             if (user) {
                 this.showMessage("Login successful!", "success");
-                // Set a timeout to redirect to the home page after 1 second
                 setTimeout(() => {
-                    // Set a cookie that expires in 24 hours
                     this.setCookie("username", username, 1);
                     window.location.href = "index.html";
                 }, 1000);
             } else {
                 this.showMessage("Invalid username or password.", "error");
+                usernameInput.value = "";
+                passwordInput.value ="";
             }
+
         } catch (error) {
             console.error("Error during login:", error);
         }
@@ -62,14 +81,23 @@ export class Login {
     }
 
     showMessage(message, type) {
-        const messageElement = document.createElement("div");
-        messageElement.className = `message ${type}`;
-        messageElement.innerText = message;
+        let existingMessageElement = document.querySelector(".message");
 
-        passwordInput.parentNode.insertBefore(messageElement, passwordInput.nextSibling);
+        if (existingMessageElement) {
+            existingMessageElement.innerText = message;
+            clearTimeout(this.messageTimeout);
+        } else {
+            const messageElement = document.createElement("div");
+            messageElement.className = `message ${type}`;
+            messageElement.innerText = message;
 
-        setTimeout(() => {
-            messageElement.remove();
+            passwordInput.parentNode.insertBefore(messageElement, passwordInput.nextSibling);
+        }
+
+        this.messageTimeout = setTimeout(() => {
+            if (existingMessageElement) {
+                existingMessageElement.remove();
+            }
         }, 5000);
     }
 
@@ -104,15 +132,12 @@ export class Login {
         });
     }
 
-
     getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
     }
-
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const user = new User();
@@ -120,8 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     user.getUser().then((userData) => {
         login.loginBtn(userData);
-        login.clickCartBtn();
+        login.clickAccountBtn();
     });
-
-
 });

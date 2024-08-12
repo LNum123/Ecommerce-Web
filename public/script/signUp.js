@@ -53,7 +53,8 @@ class SignUp {
             const newUser = {
                 username: username,
                 email: email,
-                password: password
+                password: password,
+                usedPassword: []
             };
 
             try {
@@ -76,7 +77,29 @@ class SignUp {
                 }
 
             } catch (error) {
-                this.showMessage("Error registering user.", "error");
+                this.showMessage("Error registering user. "+error + "\n Error using Server, Data saved in localStorage", "error");
+
+                // Save the new user to localStorage
+                let users = JSON.parse(localStorage.getItem("users")) || { user: [] };
+                let newUser = {
+                    sys: {
+                        id: users.user.length > 0 ? parseInt(users.user[users.user.length - 1].sys.id) + 1 : 1
+                    },
+                    fields: {
+                        username: username,
+                        password: password,
+                        usedPassword: [],
+                        email: email
+                    }
+                };
+
+                users.user.push(newUser);
+                localStorage.setItem("users", JSON.stringify(users));
+
+                this.showMessage("User registered successfully.", "success");
+                setTimeout(() => {
+                    window.location.href = "account.html";
+                }, 2000);
             }
         });
     }
@@ -90,16 +113,28 @@ class SignUp {
     }
 
     showMessage(message, type) {
-        const messageElement = document.createElement("div");
-        messageElement.className = `message ${type}`;
-        messageElement.innerText = message;
+        // Check if an existing message is already displayed
+        let existingMessageElement = document.querySelector(".message");
 
-        confirmPasswordInput.parentNode.insertBefore(messageElement, confirmPasswordInput.nextSibling);
+        if (existingMessageElement) {
+            existingMessageElement.innerText = message;
+            clearTimeout(this.messageTimeout);
+        } else {
+            const messageElement = document.createElement("div");
+            messageElement.className = `message ${type}`;
+            messageElement.innerText = message;
 
-        setTimeout(() => {
-            messageElement.remove();
+            passwordInput.parentNode.insertBefore(messageElement, passwordInput.nextSibling);
+        }
+
+        // Reset the timeout for the message to disappear
+        this.messageTimeout = setTimeout(() => {
+            if (existingMessageElement) {
+                existingMessageElement.remove();
+            }
         }, 5000);
     }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
